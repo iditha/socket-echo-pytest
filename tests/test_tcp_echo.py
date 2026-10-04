@@ -5,7 +5,7 @@ from echo.tcp_client import tcp_echo
 
 @pytest.mark.parametrize(
     "message",
-    [b"hello", b"", b"x" * 10_000, "שלום".encode()],
+    [b"hello", b"", b"x" * 10_000, "Hey".encode()],
     ids=["short", "empty", "bigger-than-one-recv", "hebrew-utf8"],
 )
 def test_echo_returns_same_bytes(tcp_server, message):

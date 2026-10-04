@@ -3,14 +3,23 @@ import socket
 import pytest
 
 from echo.tcp_server import TCPEchoServer
+from echo.udp_server import UDPEchoServer
 
 
 @pytest.fixture
 def tcp_server():
     server = TCPEchoServer()
     server.start()
-    yield server        # the test runs here
-    server.stop()       # cleanup, even if the test failed
+    yield server
+    server.stop()
+
+
+@pytest.fixture
+def udp_server():
+    server = UDPEchoServer()
+    server.start()
+    yield server
+    server.stop()
 
 
 @pytest.fixture
